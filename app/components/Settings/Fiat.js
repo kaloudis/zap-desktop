@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import FaAngleLeft from 'react-icons/lib/fa/angle-left'
+import Isvg from 'react-inlinesvg'
+import checkIcon from 'icons/check.svg'
 import styles from './Fiat.scss'
 
 const Fiat = ({ fiatTicker, fiatTickers, disableSubMenu, setFiatTicker }) => {
@@ -17,7 +19,8 @@ const Fiat = ({ fiatTicker, fiatTickers, disableSubMenu, setFiatTicker }) => {
             className={fiatTicker === ft && styles.active}
             onClick={() => setFiatTicker(ft)}
           >
-            {ft}
+            <span>{ft}</span>
+            {fiatTicker === ft && <Isvg src={checkIcon} />}
           </li>
         ))}
       </ul>
