@@ -3,6 +3,7 @@
 // ------------------------------------
 export const SET_SETTINGS_OPEN = 'SET_SETTINGS_OPEN'
 export const SET_ACTIVE_SUBMENU = 'SET_ACTIVE_SUBMENU'
+export const DISABLE_SUBMENU = 'DISABLE_SUBMENU'
 
 // ------------------------------------
 // Actions
@@ -21,12 +22,19 @@ export function setActiveSubMenu(activeSubMenu) {
   }
 }
 
+export function disableSubMenu() {
+  return {
+    type: DISABLE_SUBMENU
+  }
+}
+
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
   [SET_SETTINGS_OPEN]: (state, { settingsOpen }) => ({ ...state, settingsOpen }),
-  [SET_ACTIVE_SUBMENU]: (state, { activeSubMenu }) => ({ ...state, activeSubMenu })
+  [SET_ACTIVE_SUBMENU]: (state, { activeSubMenu }) => ({ ...state, activeSubMenu }),
+  [DISABLE_SUBMENU]: state => ({ ...state, activeSubMenu: null })
 }
 
 // ------------------------------------

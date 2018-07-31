@@ -1,11 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import FaAngleLeft from 'react-icons/lib/fa/angle-left'
 import styles from './Fiat.scss'
 
-const Fiat = () => {
+const Fiat = ({ disableSubMenu }) => {
   return (
     <div>
-      <header className={styles.submenuHeader}>
+      <header className={styles.submenuHeader} onClick={disableSubMenu}>
         <FaAngleLeft />
         <span>Fiat currency</span>
       </header>
@@ -19,6 +20,10 @@ const Fiat = () => {
       </ul>
     </div>
   )
+}
+
+Fiat.propTypes = {
+  disableSubMenu: PropTypes.func.isRequired
 }
 
 export default Fiat

@@ -20,7 +20,7 @@ import { payFormSelectors } from 'reducers/payform'
 
 import { setWalletCurrencyFilters } from 'reducers/info'
 
-import { setSettingsOpen, setActiveSubMenu } from 'reducers/settings'
+import { setSettingsOpen, setActiveSubMenu, disableSubMenu } from 'reducers/settings'
 
 import Activity from '../components/Activity'
 
@@ -43,7 +43,8 @@ const mapDispatchToProps = {
   setFormType,
   setWalletCurrencyFilters,
   setSettingsOpen,
-  setActiveSubMenu
+  setActiveSubMenu,
+  disableSubMenu
 }
 
 const mapStateToProps = state => ({
@@ -116,7 +117,11 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
 
         return
       },
-      setActiveSubMenu: dispatchProps.setActiveSubMenu
+      setActiveSubMenu: dispatchProps.setActiveSubMenu,
+
+      fiatProps: {
+        disableSubMenu: dispatchProps.disableSubMenu
+      }
     }
   }
 })
