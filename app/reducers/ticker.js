@@ -1,6 +1,10 @@
 import { createSelector } from 'reselect'
+import Store from 'electron-store'
 import { requestTicker } from 'lib/utils/api'
 import { infoSelectors } from './info'
+
+// Ticker store
+const store = new Store({ name: 'ticker' })
 
 // ------------------------------------
 // Constants
@@ -35,6 +39,9 @@ export function setCrypto(crypto) {
 }
 
 export function setFiatTicker(fiatTicker) {
+  // Persist the new fiatTicker in our ticker store
+  store.set('fiatTicker', fiatTicker)
+
   return {
     type: SET_FIAT_TICKER,
     fiatTicker
@@ -134,7 +141,7 @@ const initialState = {
   crypto: '',
   btcTicker: null,
   ltcTicker: null,
-  fiatTicker: 'USD',
+  fiatTicker: store.get('fiatTicker', 'USD'),
   fiatTickers: [
     'USD',
     'AUD',
