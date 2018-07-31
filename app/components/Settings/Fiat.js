@@ -10,7 +10,7 @@ const Fiat = ({ fiatTicker, fiatTickers, disableSubMenu, setFiatTicker }) => {
         <FaAngleLeft />
         <span>Fiat currency</span>
       </header>
-      <ul>
+      <ul className={styles.fiatTickers}>
         {fiatTickers.map(ft => (
           <li
             key={ft}
