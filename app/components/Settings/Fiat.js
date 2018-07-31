@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import FaAngleLeft from 'react-icons/lib/fa/angle-left'
 import styles from './Fiat.scss'
 
-const Fiat = ({ disableSubMenu }) => {
+const Fiat = ({ fiatTicker, fiatTickers, disableSubMenu }) => {
   return (
     <div>
       <header className={styles.submenuHeader} onClick={disableSubMenu}>
@@ -11,18 +11,19 @@ const Fiat = ({ disableSubMenu }) => {
         <span>Fiat currency</span>
       </header>
       <ul>
-        <li>USD</li>
-        <li>JPY</li>
-        <li>CNY</li>
-        <li>SGD</li>
-        <li>HKD</li>
-        <li>CAD</li>
+        {fiatTickers.map(ft => (
+          <li key={ft} className={fiatTicker === ft && styles.active}>
+            {ft}
+          </li>
+        ))}
       </ul>
     </div>
   )
 }
 
 Fiat.propTypes = {
+  fiatTicker: PropTypes.string.isRequired,
+  fiatTickers: PropTypes.array.isRequired,
   disableSubMenu: PropTypes.func.isRequired
 }
 

@@ -120,6 +120,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
       setActiveSubMenu: dispatchProps.setActiveSubMenu,
 
       fiatProps: {
+        fiatTicker: stateProps.ticker.fiatTicker,
+        fiatTickers: stateProps.ticker.fiatTickers,
         disableSubMenu: dispatchProps.disableSubMenu
       }
     }

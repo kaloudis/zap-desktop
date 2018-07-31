@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { requestTickers } from 'lib/utils/api'
+import { requestTicker } from 'lib/utils/api'
 import { infoSelectors } from './info'
 
 // ------------------------------------
@@ -49,10 +49,10 @@ export function recieveTickers({ btcTicker, ltcTicker }) {
 
 export const fetchTicker = () => async dispatch => {
   dispatch(getTickers())
-  const tickers = await requestTickers(['bitcoin', 'litecoin'])
-  dispatch(recieveTickers(tickers))
+  const btcTicker = await requestTicker()
+  dispatch(recieveTickers({ btcTicker }))
 
-  return tickers
+  return btcTicker
 }
 
 // Receive IPC event for receiveCryptocurrency
@@ -125,6 +125,31 @@ const initialState = {
   crypto: '',
   btcTicker: null,
   ltcTicker: null,
+  fiatTicker: 'AUD',
+  fiatTickers: [
+    'USD',
+    'AUD',
+    'BRL',
+    'CAD',
+    'CHF',
+    'CLP',
+    'CNY',
+    'DKK',
+    'EUR',
+    'GBP',
+    'HKD',
+    'INR',
+    'ISK',
+    'JPY',
+    'KRW',
+    'NZD',
+    'PLN',
+    'RUB',
+    'SEK',
+    'SGD',
+    'THB',
+    'TWB'
+  ],
   currencyFilters: [
     {
       key: 'btc',
