@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import FaAngleLeft from 'react-icons/lib/fa/angle-left'
 import styles from './Fiat.scss'
 
-const Fiat = ({ fiatTicker, fiatTickers, disableSubMenu }) => {
+const Fiat = ({ fiatTicker, fiatTickers, disableSubMenu, setFiatTicker }) => {
   return (
     <div>
       <header className={styles.submenuHeader} onClick={disableSubMenu}>
@@ -12,7 +12,11 @@ const Fiat = ({ fiatTicker, fiatTickers, disableSubMenu }) => {
       </header>
       <ul>
         {fiatTickers.map(ft => (
-          <li key={ft} className={fiatTicker === ft && styles.active}>
+          <li
+            key={ft}
+            className={fiatTicker === ft && styles.active}
+            onClick={() => setFiatTicker(ft)}
+          >
             {ft}
           </li>
         ))}
@@ -24,7 +28,8 @@ const Fiat = ({ fiatTicker, fiatTickers, disableSubMenu }) => {
 Fiat.propTypes = {
   fiatTicker: PropTypes.string.isRequired,
   fiatTickers: PropTypes.array.isRequired,
-  disableSubMenu: PropTypes.func.isRequired
+  disableSubMenu: PropTypes.func.isRequired,
+  setFiatTicker: PropTypes.func.isRequired
 }
 
 export default Fiat

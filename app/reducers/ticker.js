@@ -7,6 +7,7 @@ import { infoSelectors } from './info'
 // ------------------------------------
 export const SET_CURRENCY = 'SET_CURRENCY'
 export const SET_CRYPTO = 'SET_CRYPTO'
+export const SET_FIAT_TICKER = 'SET_FIAT_TICKER'
 export const GET_TICKERS = 'GET_TICKERS'
 export const RECIEVE_TICKERS = 'RECIEVE_TICKERS'
 
@@ -30,6 +31,13 @@ export function setCrypto(crypto) {
   return {
     type: SET_CRYPTO,
     crypto
+  }
+}
+
+export function setFiatTicker(fiatTicker) {
+  return {
+    type: SET_FIAT_TICKER,
+    fiatTicker
   }
 }
 
@@ -67,6 +75,7 @@ export const receiveCryptocurrency = (event, currency) => dispatch => {
 const ACTION_HANDLERS = {
   [SET_CURRENCY]: (state, { currency }) => ({ ...state, fromCurrency: state.currency, currency }),
   [SET_CRYPTO]: (state, { crypto }) => ({ ...state, crypto }),
+  [SET_FIAT_TICKER]: (state, { fiatTicker }) => ({ ...state, fiatTicker }),
   [GET_TICKERS]: state => ({ ...state, tickerLoading: true }),
   [RECIEVE_TICKERS]: (state, { btcTicker, ltcTicker }) => ({
     ...state,
@@ -125,7 +134,7 @@ const initialState = {
   crypto: '',
   btcTicker: null,
   ltcTicker: null,
-  fiatTicker: 'AUD',
+  fiatTicker: 'USD',
   fiatTickers: [
     'USD',
     'AUD',
