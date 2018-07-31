@@ -161,9 +161,9 @@ class Network extends Component {
           <section>
             <h2>My Network</h2>
             <span className={styles.channelAmount}>
-              {btc.satoshisToBtc(balance.channelBalance)} {currencyName} ≈ ${usdAmount
-                ? usdAmount.toLocaleString()
-                : ''}
+              {btc.satoshisToBtc(balance.channelBalance)} {currencyName} ≈{' '}
+              {currentTicker[ticker.fiatTicker].symbol}
+              {usdAmount ? usdAmount.toLocaleString() : ''}
             </span>
           </section>
           <section
