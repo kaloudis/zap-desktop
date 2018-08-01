@@ -150,7 +150,7 @@ class Network extends Component {
       return 'online'
     }
 
-    const usdAmount = btc.satoshisToUsd(
+    const fiatAmount = btc.satoshisToUsd(
       balance.channelBalance,
       currentTicker[ticker.fiatTicker].last
     )
@@ -163,7 +163,7 @@ class Network extends Component {
             <span className={styles.channelAmount}>
               {btc.satoshisToBtc(balance.channelBalance)} {currencyName} ≈{' '}
               {currentTicker[ticker.fiatTicker].symbol}
-              {usdAmount ? usdAmount.toLocaleString() : ''}
+              {fiatAmount ? fiatAmount : ''}
             </span>
           </section>
           <section
