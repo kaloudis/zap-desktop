@@ -4,7 +4,7 @@ import { requestTicker } from 'lib/utils/api'
 import { infoSelectors } from './info'
 
 // Ticker store
-const store = new Store({ name: 'ticker' })
+const store = new Store({ name: 'settings' })
 
 // ------------------------------------
 // Constants
