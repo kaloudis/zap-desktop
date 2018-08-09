@@ -1,9 +1,26 @@
+// @flow
+
+import Store from 'electron-store'
 import tickerReducer, {
   SET_CURRENCY,
   SET_CRYPTO,
   GET_TICKERS,
   RECIEVE_TICKERS
 } from 'reducers/ticker'
+
+jest.mock('electron', () => {
+  const { normalize } = require('path')
+
+  return {
+    app: {
+      getPath: name => normalize(`/tmp/zap-test/${name}`),
+      getAppPath: () => normalize('/tmp/zap-test')
+    }
+  }
+})
+
+Store.prototype.set = jest.fn()
+Store.prototype.get = jest.fn()
 
 describe('reducers', () => {
   describe('tickerReducer', () => {

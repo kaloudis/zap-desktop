@@ -1,3 +1,5 @@
+// @flow
+
 import invoiceReducer, {
   SEARCH_INVOICES,
   SET_INVOICE,
@@ -10,6 +12,17 @@ import invoiceReducer, {
   INVOICE_SUCCESSFUL,
   INVOICE_FAILED
 } from 'reducers/invoice'
+
+jest.mock('electron', () => {
+  const { normalize } = require('path')
+
+  return {
+    app: {
+      getPath: name => normalize(`/tmp/zap-test/${name}`),
+      getAppPath: () => normalize('/tmp/zap-test')
+    }
+  }
+})
 
 describe('reducers', () => {
   describe('invoiceReducer', () => {

@@ -3,7 +3,7 @@ import Store from 'electron-store'
 import { requestTicker } from 'lib/utils/api'
 import { infoSelectors } from './info'
 
-// Ticker store
+// Settings store
 const store = new Store({ name: 'settings' })
 
 // ------------------------------------

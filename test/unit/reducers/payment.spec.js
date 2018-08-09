@@ -1,3 +1,5 @@
+// @flow
+
 import paymentReducer, {
   SET_PAYMENT,
   GET_PAYMENTS,
@@ -6,6 +8,17 @@ import paymentReducer, {
   PAYMENT_SUCCESSFULL,
   PAYMENT_FAILED
 } from 'reducers/payment'
+
+jest.mock('electron', () => {
+  const { normalize } = require('path')
+
+  return {
+    app: {
+      getPath: name => normalize(`/tmp/zap-test/${name}`),
+      getAppPath: () => normalize('/tmp/zap-test')
+    }
+  }
+})
 
 describe('reducers', () => {
   describe('paymentReducer', () => {
