@@ -174,7 +174,7 @@ payFormSelectors.currentAmount = createSelector(
     if (isLn) {
       switch (currency) {
         case 'btc':
-          return btc.satoshisToBtc(invoice.num_satoshis || 0)
+          return btc.satoshisToFiat(invoice.num_satoshis || 0)
         case 'bits':
           return btc.satoshisToBits(invoice.num_satoshis || 0)
         case 'sats':
@@ -188,7 +188,7 @@ payFormSelectors.currentAmount = createSelector(
   }
 )
 
-payFormSelectors.usdAmount = createSelector(
+payFormSelectors.fiatAmount = createSelector(
   payFormSelectors.isLn,
   payAmountSelector,
   payInvoiceSelector,
@@ -204,7 +204,7 @@ payFormSelectors.usdAmount = createSelector(
       return btc.satoshisToUsd(invoice.num_satoshis || 0, currentTicker[fiatTicker].last)
     }
 
-    return btc.convert(currency, 'usd', amount, currentTicker[fiatTicker].last)
+    return btc.convert(currency, 'fiat', amount, currentTicker[fiatTicker].last)
   }
 )
 
